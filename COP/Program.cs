@@ -16,7 +16,7 @@ namespace COP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2ndLab());
+            Application.Run(new Form1stLab());
         }
     }
 }

@@ -111,7 +111,6 @@
             // 
             // comboBoxKozlov
             // 
-            this.comboBoxKozlov.Items = ((System.Collections.Generic.IEnumerable<object>)(resources.GetObject("comboBoxKozlov.Items")));
             this.comboBoxKozlov.Location = new System.Drawing.Point(11, 12);
             this.comboBoxKozlov.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxKozlov.Name = "comboBoxKozlov";

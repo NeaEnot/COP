@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.ComboBox;
 
 namespace _1sLabComponents
 {
@@ -17,23 +18,11 @@ namespace _1sLabComponents
         /// Элементы контрола
         /// </summary>
         [Category("Спецификация"), Description("Элементы контрола")]
-        public IEnumerable<object> Items
+        public ObjectCollection Items
         {
             get
             {
-                List<object> list = new List<object>();
-
-                foreach(var item in comboBox.Items)
-                {
-                    list.Add(item);
-                }
-
-                return list;
-            }
-            set
-            {
-                comboBox.Items.Clear();
-                comboBox.Items.AddRange(value.ToArray());
+                return comboBox.Items;
             }
         }
 

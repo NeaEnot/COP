@@ -33,6 +33,10 @@ namespace _1sLabComponents
             {
                 wrongColor = value;
             }
+            get
+            {
+                return wrongColor;
+            }
         }
 
         /// <summary>
@@ -49,7 +53,7 @@ namespace _1sLabComponents
                 }
                 else
                 {
-                    return "Wrong value";
+                    throw new Exception("Wrong value");
                 }
             }
         }

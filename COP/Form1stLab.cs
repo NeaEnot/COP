@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COP
@@ -22,7 +17,7 @@ namespace COP
                 list.Add(i.ToString());
             }
 
-            comboBoxKozlov.Items = list;
+            comboBoxKozlov.Items.AddRange(list.ToArray());
 
             phoneInputKozlov.WrongColor = Color.Coral;
 
@@ -65,7 +60,7 @@ namespace COP
             covenants.Add("Путь Дракона");
             covenants.Add("Темные Духи");
 
-            listBoxKozlov.SetTemplateString("Name;Covenant;Level");
+            listBoxKozlov.SetTemplateString("{Name} ({Level}) - {Covenant} ... {Name}");
 
             Random rnd = new Random();
             for (int i = 0; i < 8; i++)
@@ -107,7 +102,14 @@ namespace COP
 
         private void phoneInputKozlov_TextBoxTextChanged(object sender, EventArgs e)
         {
-            labelPhone.Text = phoneInputKozlov.Text;
+            try
+            {
+                labelPhone.Text = phoneInputKozlov.Text;
+            }
+            catch 
+            {
+                labelPhone.Text = "";
+            }
         }
 
         private void buttonCharacterApply_Click(object sender, EventArgs e)

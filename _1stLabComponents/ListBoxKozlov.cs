@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace _1stLabComponents
@@ -64,7 +65,7 @@ namespace _1stLabComponents
         /// <summary>
         /// Метод для ввода шаблонной строки вывода
         /// </summary>
-        /// <param name="s"> Шаблонная строка вывода: "Свойство1;Свойство2;..." </param>
+        /// <param name="s"> Шаблонная строка вывода: {Property} - место для подстановки </param>
         [Category("Спецификация"), Description("Метод для ввода шаблонной строки вывода")]
         public void SetTemplateString(string s)
         {
@@ -79,36 +80,27 @@ namespace _1stLabComponents
         [Category("Спецификация"), Description("Метод для вставки значения")]
         public void Add(object obj, int index = -1)
         {
-            string value = "";
-            string[] props = templateString.Split(';');
+            string value = (index >= 0 && index < listBox.Items.Count) ? listBox.Items[index].ToString() : templateString;
+
+            Regex regex = new Regex(@"{[\w|\d|_]+}");
+            MatchCollection matches = regex.Matches(value);
+
+            for (int i = 0; i < matches.Count; i++)
+            {
+                string prop = matches[i].Value.Substring(1, matches[i].Value.Length - 2);
+
+                if (obj.GetType().GetProperty(prop).GetValue(obj).ToString() != "")
+                {
+                    value = value.Replace(matches[i].Value, obj.GetType().GetProperty(prop).GetValue(obj).ToString());
+                }
+            }
 
             if (index >= 0 && index < listBox.Items.Count)
             {
-                string[] itemProps = listBox.Items[index].ToString().Split(';');
-
-                for (int i = 0; i < props.Length; i++)
-                {
-                    if (itemProps[i] == "")
-                    {
-                        value += obj.GetType().GetProperty(props[i]).GetValue(obj).ToString() + ";";
-                    }
-                    else
-                    {
-                        value += itemProps[i] + ";";
-                    }
-                }
-                value = value.Substring(0, value.Length - 1);
-
                 listBox.Items[index] = value;
             }
             else
             {
-                for (int i = 0; i < props.Length; i++)
-                {
-                    value += obj.GetType().GetProperty(props[i]).GetValue(obj).ToString() + ";";
-                }
-                value = value.Substring(0, value.Length - 1);
-
                 listBox.Items.Add(value);
             }
         }
