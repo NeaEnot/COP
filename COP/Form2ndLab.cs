@@ -42,7 +42,7 @@ namespace COP
 
         private void buttonReportExcel_Click(object sender, EventArgs e)
         {
-            excelReporterKozlov.CreateReport(ReadCharacterFromForm(), "C:\\Users\\olegk\\Downloads\\character.xlsx");
+            //excelReporterKozlov.CreateReport(ReadCharacterFromForm(), "C:\\Users\\olegk\\Downloads\\character.xlsx");
         }
 
         private void buttonChart_Click(object sender, EventArgs e)

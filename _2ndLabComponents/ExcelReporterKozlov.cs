@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
 using _2ndLabComponents.Enums;
@@ -28,7 +29,7 @@ namespace _2ndLabComponents
         /// <param name="obj"> Источник отчёта </param>
         /// <param name="path"> Путь к файлу </param>
         /// <param name="headerType"> Расположение шапки: сверху или сбоку </param>
-        public void CreateReport(object obj, string path, HeaderType headerType = HeaderType.Horizontal)
+        public void CreateReport(IEnumerable enumerable, string path, HeaderType headerType = HeaderType.Horizontal)
         {
             //Объявляем приложение
             Application ex = new Application();
@@ -45,21 +46,30 @@ namespace _2ndLabComponents
             //Название листа (вкладки снизу)
             sheet.Name = $"Отчет за {DateTime.Now.ToString("dd.MM.yyyy")}";
 
-            var props = obj.GetType().GetProperties();
+            int k = 2;
 
-            for (int i = 1; i <= props.Length; i++)
+            foreach (var elem in enumerable)
             {
-                PropertyInfo prop = props[i - 1];
-                if (headerType == HeaderType.Horizontal)
+                var props = elem.GetType().GetProperties();
+
+                for (int i = 1; i <= props.Length; i++)
                 {
-                    sheet.Cells[1, i] = prop.Name;
-                    sheet.Cells[2, i] = prop.GetValue(obj).ToString();
+                    PropertyInfo prop = props[i - 1];
+                    if (headerType == HeaderType.Horizontal)
+                    {
+                        if (k == 2)
+                            sheet.Cells[1, i] = prop.Name;
+                        sheet.Cells[k, i] = prop.GetValue(elem).ToString();
+                    }
+                    if (headerType == HeaderType.Vertical)
+                    {
+                        if (k == 2)
+                            sheet.Cells[i, 1] = prop.Name;
+                        sheet.Cells[i, k] = prop.GetValue(elem).ToString();
+                    }
                 }
-                if (headerType == HeaderType.Vertical)
-                {
-                    sheet.Cells[i, 1] = prop.Name;
-                    sheet.Cells[i, 2] = prop.GetValue(obj).ToString();
-                }
+
+                k++;
             }
 
             ex.Application.ActiveWorkbook.SaveAs(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
