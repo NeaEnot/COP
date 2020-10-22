@@ -28,21 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.controlDataListRow = new WindowsFormsControlLibrary.Data.ControlDataListRow();
+            this.components = new System.ComponentModel.Container();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
-            this.buttonChart = new System.Windows.Forms.Button();
+            this.controlDataTreeRow = new WindowsFormsControlLibrary.Data.ControlDataTreeRow();
+            this.componentSaveDataJson = new WindowsFormsComponentLibrary.Data.ComponentSaveDataJson(this.components);
+            this.buttonBackup = new System.Windows.Forms.Button();
+            this.componentWordJoinColumnsHeader = new WindowsFormsComponentLibrary.Report.ComponentWordJoinColumnsHeader();
             this.buttonReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // controlDataListRow
-            // 
-            this.controlDataListRow.Location = new System.Drawing.Point(12, 12);
-            this.controlDataListRow.Name = "controlDataListRow";
-            this.controlDataListRow.SelectedRowIndex = -1;
-            this.controlDataListRow.Size = new System.Drawing.Size(776, 386);
-            this.controlDataListRow.TabIndex = 0;
-            this.controlDataListRow.Load += new System.EventHandler(this.controlDataListRow_Load);
             // 
             // buttonAdd
             // 
@@ -64,22 +58,29 @@
             this.buttonDel.UseVisualStyleBackColor = true;
             this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
-            // buttonChart
+            // controlDataTreeRow
             // 
-            this.buttonChart.Location = new System.Drawing.Point(713, 404);
-            this.buttonChart.Name = "buttonChart";
-            this.buttonChart.Size = new System.Drawing.Size(75, 23);
-            this.buttonChart.TabIndex = 3;
-            this.buttonChart.Text = "Диаграмма";
-            this.buttonChart.UseVisualStyleBackColor = true;
-            this.buttonChart.Click += new System.EventHandler(this.buttonChart_Click);
+            this.controlDataTreeRow.Location = new System.Drawing.Point(12, 12);
+            this.controlDataTreeRow.Name = "controlDataTreeRow";
+            this.controlDataTreeRow.Size = new System.Drawing.Size(776, 374);
+            this.controlDataTreeRow.TabIndex = 3;
+            // 
+            // buttonBackup
+            // 
+            this.buttonBackup.Location = new System.Drawing.Point(713, 404);
+            this.buttonBackup.Name = "buttonBackup";
+            this.buttonBackup.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackup.TabIndex = 4;
+            this.buttonBackup.Text = "Бэкап";
+            this.buttonBackup.UseVisualStyleBackColor = true;
+            this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
             // 
             // buttonReport
             // 
             this.buttonReport.Location = new System.Drawing.Point(632, 404);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(75, 23);
-            this.buttonReport.TabIndex = 4;
+            this.buttonReport.TabIndex = 5;
             this.buttonReport.Text = "Отчёт";
             this.buttonReport.UseVisualStyleBackColor = true;
             this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
@@ -90,10 +91,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 439);
             this.Controls.Add(this.buttonReport);
-            this.Controls.Add(this.buttonChart);
+            this.Controls.Add(this.buttonBackup);
+            this.Controls.Add(this.controlDataTreeRow);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.controlDataListRow);
             this.Name = "FormMain";
             this.Text = "Курьер";
             this.ResumeLayout(false);
@@ -101,11 +102,12 @@
         }
 
         #endregion
-
-        private WindowsFormsControlLibrary.Data.ControlDataListRow controlDataListRow;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDel;
-        private System.Windows.Forms.Button buttonChart;
+        private WindowsFormsControlLibrary.Data.ControlDataTreeRow controlDataTreeRow;
+        private WindowsFormsComponentLibrary.Data.ComponentSaveDataJson componentSaveDataJson;
+        private System.Windows.Forms.Button buttonBackup;
+        private WindowsFormsComponentLibrary.Report.ComponentWordJoinColumnsHeader componentWordJoinColumnsHeader;
         private System.Windows.Forms.Button buttonReport;
     }
 }

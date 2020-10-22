@@ -1,4 +1,5 @@
 ﻿using CourierBusinessLogic.Enums;
+using System;
 
 namespace CourierDatabaseImplement.Models
 {
@@ -10,6 +11,6 @@ namespace CourierDatabaseImplement.Models
 
         public DeliveryType DeliveryType { set; get; }
 
-        public decimal Count { set; get; }
+        public DateTime? DeliveryDate { set; get; }
     }
 }

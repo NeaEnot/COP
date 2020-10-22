@@ -20,19 +20,25 @@ namespace CourierView
 
         private readonly IDeliveryActLogic logic;
 
+        List<DeliveryAct> deliveryActs;
+
         public FormMain(IDeliveryActLogic logic)
         {
             this.logic = logic;
             InitializeComponent();
+
+            Queue<string> queue = new Queue<string>();
+            queue.Enqueue("DeliveryType");
+            controlDataTreeRow.LoadTreeInfo(new WindowsFormsControlLibrary.Models.DataTreeNodeConfig { NodeNames = queue });
         }
 
         private void LoadData()
         {
-            var list = logic.Read(null);
+            deliveryActs = logic.Read(null);
 
-            foreach (var element in list)
+            foreach (var act in deliveryActs)
             {
-                controlDataListRow.AddRow(element);
+                controlDataTreeRow.AddRow(act);
             }
         }
 
@@ -53,26 +59,21 @@ namespace CourierView
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            int index = controlDataListRow.SelectedRowIndex;
+            DeliveryAct act = (DeliveryAct)controlDataTreeRow.SelectedNode;
 
-            if (index >= 0)
-            {
-                DeliveryAct act = (DeliveryAct)controlDataListRow.SelectedRow;
+            logic.Delete(new DeliveryAct { Id = act.Id });
 
-                logic.Delete(new DeliveryAct { Id = act.Id });
+            LoadData();
+        }
 
-                LoadData();
-            }
+        private void buttonBackup_Click(object sender, EventArgs e)
+        {
+            componentSaveDataJson.SaveData("C:\\Users\\root\\Downloads\\Бэкап", deliveryActs);
         }
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void buttonChart_Click(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }

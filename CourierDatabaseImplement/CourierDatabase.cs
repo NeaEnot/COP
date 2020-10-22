@@ -11,7 +11,7 @@ namespace CourierDatabaseImplement
             {
                 optionsBuilder
                     .UseSqlServer(
-                        @"Data Source=DESKTOP-S65O0I4\SQLEXPRESS;
+                        @"Data Source=DESKTOP-SP8LH2A\SQLEXPRESS;
                           Initial Catalog=CourierDatabase;
                           Integrated Security=True;
                           MultipleActiveResultSets=True;");

@@ -33,7 +33,7 @@ namespace CourierDatabaseImplement.Implements
 
                 element.CourierFIO = act.CourierFIO;
                 element.DeliveryType = act.DeliveryType.Value;
-                element.Count = act.Count;
+                element.DeliveryDate = act.DeliveryDate;
 
                 context.SaveChanges();
             }
@@ -73,7 +73,7 @@ namespace CourierDatabaseImplement.Implements
                     Id = rec.Id,
                     CourierFIO = rec.CourierFIO,
                     DeliveryType = rec.DeliveryType,
-                    Count = rec.Count
+                    DeliveryDate = rec.DeliveryDate
                 })
                 .ToList();
             }

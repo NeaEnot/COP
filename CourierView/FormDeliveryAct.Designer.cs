@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.textBoxFIO = new System.Windows.Forms.TextBox();
-            this.controlComboBoxDeliveryType = new WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle();
-            this.controlRangeNumberCount = new WindowsFormsControlLibrary.Input.ControlInputRangeNumber();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.controlComboBoxDeliveryType = new WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle();
+            this.controlInputDateDeliveryDate = new WindowsFormsControlLibrary.Input.ControlInputRangeDate();
+            this.checkBoxIsDelivered = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxFIO
@@ -43,37 +44,6 @@
             this.textBoxFIO.Name = "textBoxFIO";
             this.textBoxFIO.Size = new System.Drawing.Size(161, 20);
             this.textBoxFIO.TabIndex = 0;
-            // 
-            // controlComboBoxDeliveryType
-            // 
-            this.controlComboBoxDeliveryType.Location = new System.Drawing.Point(142, 61);
-            this.controlComboBoxDeliveryType.Name = "controlComboBoxDeliveryType";
-            this.controlComboBoxDeliveryType.SelectedIndex = -1;
-            this.controlComboBoxDeliveryType.SelectedItem = null;
-            this.controlComboBoxDeliveryType.Size = new System.Drawing.Size(160, 21);
-            this.controlComboBoxDeliveryType.TabIndex = 1;
-            // 
-            // controlRangeNumberCount
-            // 
-            this.controlRangeNumberCount.Location = new System.Drawing.Point(142, 100);
-            this.controlRangeNumberCount.MaxDate = new decimal(new int[] {
-            -1,
-            -1,
-            -1,
-            0});
-            this.controlRangeNumberCount.MinDate = new decimal(new int[] {
-            -1,
-            -1,
-            -1,
-            -2147483648});
-            this.controlRangeNumberCount.Name = "controlRangeNumberCount";
-            this.controlRangeNumberCount.Size = new System.Drawing.Size(161, 20);
-            this.controlRangeNumberCount.TabIndex = 2;
-            this.controlRangeNumberCount.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             // 
             // label1
             // 
@@ -98,13 +68,13 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Количество";
+            this.label3.Text = "Дата";
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(129, 139);
+            this.buttonSave.Location = new System.Drawing.Point(129, 160);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 6;
@@ -112,17 +82,50 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // controlComboBoxDeliveryType
+            // 
+            this.controlComboBoxDeliveryType.Location = new System.Drawing.Point(141, 61);
+            this.controlComboBoxDeliveryType.Name = "controlComboBoxDeliveryType";
+            this.controlComboBoxDeliveryType.SelectedIndex = -1;
+            this.controlComboBoxDeliveryType.SelectedItem = null;
+            this.controlComboBoxDeliveryType.Size = new System.Drawing.Size(161, 21);
+            this.controlComboBoxDeliveryType.TabIndex = 7;
+            // 
+            // controlInputDateDeliveryDate
+            // 
+            this.controlInputDateDeliveryDate.Location = new System.Drawing.Point(141, 100);
+            this.controlInputDateDeliveryDate.MaxDate = new System.DateTime(9999, 12, 31, 23, 59, 59, 999);
+            this.controlInputDateDeliveryDate.MinDate = new System.DateTime(((long)(0)));
+            this.controlInputDateDeliveryDate.Name = "controlInputDateDeliveryDate";
+            this.controlInputDateDeliveryDate.Size = new System.Drawing.Size(161, 20);
+            this.controlInputDateDeliveryDate.TabIndex = 8;
+            this.controlInputDateDeliveryDate.Value = new System.DateTime(2020, 10, 21, 10, 37, 25, 220);
+            // 
+            // checkBoxIsDelivered
+            // 
+            this.checkBoxIsDelivered.AutoSize = true;
+            this.checkBoxIsDelivered.Checked = true;
+            this.checkBoxIsDelivered.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIsDelivered.Location = new System.Drawing.Point(15, 133);
+            this.checkBoxIsDelivered.Name = "checkBoxIsDelivered";
+            this.checkBoxIsDelivered.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxIsDelivered.TabIndex = 9;
+            this.checkBoxIsDelivered.Text = "Доставлено";
+            this.checkBoxIsDelivered.UseVisualStyleBackColor = true;
+            this.checkBoxIsDelivered.CheckedChanged += new System.EventHandler(this.checkBoxIsDelivered_CheckedChanged);
+            // 
             // FormDeliveryAct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 174);
+            this.ClientSize = new System.Drawing.Size(334, 195);
+            this.Controls.Add(this.checkBoxIsDelivered);
+            this.Controls.Add(this.controlInputDateDeliveryDate);
+            this.Controls.Add(this.controlComboBoxDeliveryType);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.controlRangeNumberCount);
-            this.Controls.Add(this.controlComboBoxDeliveryType);
             this.Controls.Add(this.textBoxFIO);
             this.Name = "FormDeliveryAct";
             this.Text = "Доставка";
@@ -134,11 +137,12 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxFIO;
-        private WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle controlComboBoxDeliveryType;
-        private WindowsFormsControlLibrary.Input.ControlInputRangeNumber controlRangeNumberCount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonSave;
+        private WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle controlComboBoxDeliveryType;
+        private WindowsFormsControlLibrary.Input.ControlInputRangeDate controlInputDateDeliveryDate;
+        private System.Windows.Forms.CheckBox checkBoxIsDelivered;
     }
 }

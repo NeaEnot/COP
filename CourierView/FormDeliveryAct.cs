@@ -31,10 +31,15 @@ namespace CourierView
             {
                 CourierFIO = textBoxFIO.Text,
                 DeliveryType = (DeliveryType?)controlComboBoxDeliveryType.SelectedItem,
-                Count = controlRangeNumberCount.Value.Value
+                DeliveryDate = checkBoxIsDelivered.Checked ? controlInputDateDeliveryDate.Value : null
             };
 
             logic.CreateOrUpdate(act);
+        }
+
+        private void checkBoxIsDelivered_CheckedChanged(object sender, EventArgs e)
+        {
+            controlInputDateDeliveryDate.Enabled = checkBoxIsDelivered.Checked;
         }
     }
 }
