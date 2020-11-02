@@ -1,6 +1,7 @@
 ﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes.Charts;
 using MigraDoc.Rendering;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace _2ndLabComponents
@@ -24,12 +25,26 @@ namespace _2ndLabComponents
         }
 
         /// <summary>
+        /// Делегат для функции выборки
+        /// </summary>
+        /// <param name="arg">Объект класса</param>
+        /// <returns>Значение, по которому производится выборка</returns>
+        public delegate object Del(object arg);
+
+        /// <summary>
+        /// Функция выборки
+        /// </summary>
+        public Del SelectionFunction { get; set; }
+
+        /// <summary>
         /// Создание круговой диаграммы из объекта
         /// </summary>
         /// <param name="obj"> Источник данных </param>
         /// <param name="fileName"> Имя выходного файла </param>
-        public void MakePieChart(object obj, string fileName)
+        public void MakePieChart<T>(List<T> list, string fileName)
         {
+            var dict = CreateDataSet(list);
+
             Document document = new Document();
 
             Style style = document.Styles["Normal"];
@@ -42,7 +57,7 @@ namespace _2ndLabComponents
             Paragraph paragraph = section.AddParagraph("");
             paragraph.Format.SpaceAfter = "1cm";
             paragraph.Format.Alignment = ParagraphAlignment.Center;
-            paragraph.Style = "NormalTitle";
+            paragraph.Style = "NormalText";
 
             var chart = document.LastSection.AddChart(ChartType.Pie2D);
             chart.Left = 0;
@@ -52,22 +67,41 @@ namespace _2ndLabComponents
 
             chart.DataLabel.Type = dataLabelType;
 
+            Legend legend = chart.RightArea.AddLegend();
+
             Series series = chart.SeriesCollection.AddSeries();
             XSeries xseries = chart.XValues.AddXSeries();
 
-            foreach (var prop in obj.GetType().GetProperties())
+            foreach (var key in dict.Keys)
             {
-                double d;
-                if (double.TryParse(prop.GetValue(obj).ToString(), out d))
-                {
-                    xseries.Add(prop.Name);
-                    series.Add(d);
-                }
+                series.Add(dict[key]);
+                xseries.Add(key);
             }
 
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
             renderer.RenderDocument();
             renderer.PdfDocument.Save(fileName);
+        }
+
+        private Dictionary<string, int> CreateDataSet<T>(List<T> list)
+        {
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+
+            foreach (var elem in list)
+            {
+                object value = SelectionFunction(elem);
+
+                if (dict.ContainsKey(value.ToString()))
+                {
+                    dict[value.ToString()]++;
+                }
+                else
+                {
+                    dict.Add(value.ToString(), 1);
+                }
+            }
+
+            return dict;
         }
 
         /// <summary>

@@ -73,6 +73,8 @@ namespace _2ndLabComponents
             }
 
             ex.Application.ActiveWorkbook.SaveAs(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+            ex.Quit();
         }
     }
 }
