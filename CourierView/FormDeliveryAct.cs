@@ -35,6 +35,9 @@ namespace CourierView
             };
 
             logic.CreateOrUpdate(act);
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void checkBoxIsDelivered_CheckedChanged(object sender, EventArgs e)

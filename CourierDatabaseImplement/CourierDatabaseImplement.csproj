@@ -164,6 +164,11 @@
   <ItemGroup>
     <Compile Include="CourierDatabase.cs" />
     <Compile Include="Implements\DeliveryActLogic.cs" />
+    <Compile Include="Migrations\20201103092558_initial.cs" />
+    <Compile Include="Migrations\20201103092558_initial.designer.cs">
+      <DependentUpon>20201103092558_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\CourierDatabaseModelSnapshot.cs" />
     <Compile Include="Models\DeliveryAct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
