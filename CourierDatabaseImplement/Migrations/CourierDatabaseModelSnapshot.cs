@@ -22,9 +22,7 @@ namespace CourierDatabaseImplement.Migrations
             modelBuilder.Entity("CourierDatabaseImplement.Models.DeliveryAct", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("CourierFIO")
                         .HasColumnType("nvarchar(max)");

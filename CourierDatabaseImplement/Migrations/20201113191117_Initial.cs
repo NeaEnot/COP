@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CourierDatabaseImplement.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,7 @@ namespace CourierDatabaseImplement.Migrations
                 name: "DeliveryActs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(nullable: false),
                     CourierFIO = table.Column<string>(nullable: true),
                     DeliveryType = table.Column<int>(nullable: false),
                     DeliveryDate = table.Column<DateTime>(nullable: true)

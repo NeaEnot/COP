@@ -15,6 +15,7 @@ namespace CourierDatabaseImplement
                           Initial Catalog=CourierDatabase;
                           Integrated Security=True;
                           MultipleActiveResultSets=True;");
+                // nis02\SQLEXPRESS2014
             }
             base.OnConfiguring(optionsBuilder);
         }

@@ -1,6 +1,6 @@
-﻿namespace ClassLibraryControlInvisible
+﻿namespace _4thLabComponents
 {
-    partial class ComponentWordReport
+    partial class ActionsList
     {
         /// <summary>
         /// Обязательная переменная конструктора.

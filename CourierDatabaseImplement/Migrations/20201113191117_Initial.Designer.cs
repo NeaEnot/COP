@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourierDatabaseImplement.Migrations
 {
     [DbContext(typeof(CourierDatabase))]
-    [Migration("20201103092558_initial")]
-    partial class initial
+    [Migration("20201113191117_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,7 @@ namespace CourierDatabaseImplement.Migrations
             modelBuilder.Entity("CourierDatabaseImplement.Models.DeliveryAct", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("CourierFIO")
                         .HasColumnType("nvarchar(max)");

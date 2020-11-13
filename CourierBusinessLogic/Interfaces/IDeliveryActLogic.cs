@@ -5,7 +5,9 @@ namespace CourierBusinessLogic.Interfaces
 {
     public interface IDeliveryActLogic
     {
-        void CreateOrUpdate(DeliveryAct act);
+        void Create(DeliveryAct act);
+
+        void Update(DeliveryAct act);
 
         void Delete(DeliveryAct act);
 

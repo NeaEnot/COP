@@ -30,14 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDel = new System.Windows.Forms.Button();
             this.controlDataTreeRow = new WindowsFormsControlLibrary.Data.ControlDataTreeRow();
             this.buttonBackup = new System.Windows.Forms.Button();
             this.buttonReport = new System.Windows.Forms.Button();
             this.buttonChart = new System.Windows.Forms.Button();
             this.componentWordReport = new ClassLibraryControlInvisible.ComponentWordReport(this.components);
             this.userWordLinearDiagramComponent = new Lab2KOP.UserWordLinearDiagramComponent(this.components);
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.xmlBackuperKozlov = new _2ndLabComponents.XmlBackuperKozlov(this.components);
+            this.buttonPrev = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.actionsList = new _4thLabComponents.ActionsList(this.components);
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -49,16 +53,6 @@
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonDel
-            // 
-            this.buttonDel.Location = new System.Drawing.Point(119, 404);
-            this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(75, 23);
-            this.buttonDel.TabIndex = 2;
-            this.buttonDel.Text = "Удалить";
-            this.buttonDel.UseVisualStyleBackColor = true;
-            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // controlDataTreeRow
             // 
@@ -107,16 +101,59 @@
             this.userWordLinearDiagramComponent.FilePath = null;
             this.userWordLinearDiagramComponent.LegendVisible = false;
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(93, 404);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 7;
+            this.buttonUpdate.Text = "Изменить";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(174, 404);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 8;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonPrev
+            // 
+            this.buttonPrev.Location = new System.Drawing.Point(322, 404);
+            this.buttonPrev.Name = "buttonPrev";
+            this.buttonPrev.Size = new System.Drawing.Size(27, 23);
+            this.buttonPrev.TabIndex = 9;
+            this.buttonPrev.Text = "<";
+            this.buttonPrev.UseVisualStyleBackColor = true;
+            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Location = new System.Drawing.Point(355, 404);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(27, 23);
+            this.buttonNext.TabIndex = 10;
+            this.buttonNext.Text = ">";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 439);
+            this.Controls.Add(this.buttonNext);
+            this.Controls.Add(this.buttonPrev);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonChart);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonBackup);
             this.Controls.Add(this.controlDataTreeRow);
-            this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormMain";
             this.Text = "Курьер";
@@ -126,7 +163,6 @@
 
         #endregion
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDel;
         private WindowsFormsControlLibrary.Data.ControlDataTreeRow controlDataTreeRow;
         private System.Windows.Forms.Button buttonBackup;
         private System.Windows.Forms.Button buttonReport;
@@ -134,6 +170,11 @@
         private ClassLibraryControlInvisible.ComponentWordReport componentWordReport;
         private Lab2KOP.UserWordLinearDiagramComponent userWordLinearDiagramComponent;
         private _2ndLabComponents.XmlBackuperKozlov xmlBackuperKozlov;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonPrev;
+        private System.Windows.Forms.Button buttonNext;
+        private _4thLabComponents.ActionsList actionsList;
     }
 }
 

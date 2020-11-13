@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("ComponentWordReport")]
+[assembly: AssemblyTitle("_4thLabComponents")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ComponentWordReport")]
+[assembly: AssemblyProduct("_4thLabComponents")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("0faf4cf6-33a3-47ad-b6b9-95c4520d0eed")]
+[assembly: Guid("ff783128-3666-45f6-af9c-274f465c92bc")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

@@ -1,6 +1,7 @@
 ﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes.Charts;
 using MigraDoc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -43,6 +44,11 @@ namespace _2ndLabComponents
         /// <param name="fileName"> Имя выходного файла </param>
         public void MakePieChart<T>(List<T> list, string fileName)
         {
+            if (fileName.Length == 0)
+            {
+                throw new Exception("Не указан путь к файлу");
+            }
+
             var dict = CreateDataSet(list);
 
             Document document = new Document();

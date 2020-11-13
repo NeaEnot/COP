@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierView", "CourierView\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierDatabaseImplement", "CourierDatabaseImplement\CourierDatabaseImplement.csproj", "{48A80190-99A0-446B-ADA4-B8E7D8D8E5FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_4thLabComponents", "_4thLabComponents\_4thLabComponents.csproj", "{FF783128-3666-45F6-AF9C-274F465C92BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{48A80190-99A0-446B-ADA4-B8E7D8D8E5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48A80190-99A0-446B-ADA4-B8E7D8D8E5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48A80190-99A0-446B-ADA4-B8E7D8D8E5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF783128-3666-45F6-AF9C-274F465C92BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF783128-3666-45F6-AF9C-274F465C92BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF783128-3666-45F6-AF9C-274F465C92BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF783128-3666-45F6-AF9C-274F465C92BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

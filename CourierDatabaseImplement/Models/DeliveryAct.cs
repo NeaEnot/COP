@@ -1,10 +1,13 @@
 ﻿using CourierBusinessLogic.Enums;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourierDatabaseImplement.Models
 {
     public class DeliveryAct
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { set; get; }
 
         public string CourierFIO { set; get; }

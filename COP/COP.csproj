@@ -105,7 +105,7 @@
       <Name>ClassLibraryControlSelected</Name>
     </ProjectReference>
     <ProjectReference Include="..\_1stLabComponents\_1stLabComponents.csproj">
-      <Project>{E652FCED-F554-4D8E-8E9B-9C8C7C60FC36}</Project>
+      <Project>{e652fced-f554-4d8e-8e9b-9c8c7c60fc36}</Project>
       <Name>_1stLabComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\_2ndLabComponents\_2ndLabComponents.csproj">

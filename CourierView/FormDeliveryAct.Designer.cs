@@ -99,7 +99,6 @@
             this.controlInputDateDeliveryDate.Name = "controlInputDateDeliveryDate";
             this.controlInputDateDeliveryDate.Size = new System.Drawing.Size(161, 20);
             this.controlInputDateDeliveryDate.TabIndex = 8;
-            this.controlInputDateDeliveryDate.Value = new System.DateTime(2020, 10, 21, 10, 37, 25, 220);
             // 
             // checkBoxIsDelivered
             // 

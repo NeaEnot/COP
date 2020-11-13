@@ -8,25 +8,47 @@ namespace CourierDatabaseImplement.Implements
 {
     public class DeliveryActLogic : IDeliveryActLogic
     {
-        public void CreateOrUpdate(CourierBusinessLogic.Models.DeliveryAct act)
+        public void Create(CourierBusinessLogic.Models.DeliveryAct act)
         {
             using (var context = new CourierDatabase())
             {
-                DeliveryAct element;
+                DeliveryAct element = new DeliveryAct();
+                context.DeliveryActs.Add(element);
 
                 if (act.Id.HasValue)
                 {
-                    element = context.DeliveryActs.FirstOrDefault(rec => rec.Id == act.Id);
-
-                    if (element == null)
-                    {
-                        throw new Exception("Элемент не найден");
-                    }
+                    element.Id = act.Id.Value;
                 }
                 else
                 {
-                    element = new DeliveryAct();
-                    context.DeliveryActs.Add(element);
+                    Random rnd = new Random();
+                    while (true)
+                    {
+                        element.Id = rnd.Next(0, int.MaxValue);
+                        if (context.DeliveryActs.FirstOrDefault(rec => rec.Id == element.Id) == null)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                element.CourierFIO = act.CourierFIO;
+                element.DeliveryType = act.DeliveryType.Value;
+                element.DeliveryDate = act.DeliveryDate;
+
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(CourierBusinessLogic.Models.DeliveryAct act)
+        {
+            using (var context = new CourierDatabase())
+            {
+                DeliveryAct element = context.DeliveryActs.FirstOrDefault(rec => rec.Id == act.Id);
+
+                if (element == null)
+                {
+                    throw new Exception("Элемент не найден");
                 }
 
                 element.CourierFIO = act.CourierFIO;
@@ -62,10 +84,10 @@ namespace CourierDatabaseImplement.Implements
                 return context.DeliveryActs
                 .Where(rec =>
                     (act == null) ||
-                    (rec.Id == act.Id) ||
-                    (act.DeliveryType.HasValue && rec.DeliveryType == act.DeliveryType) ||
-                    (act.CourierFIO != "" && rec.CourierFIO == act.CourierFIO)
-                )
+                    (act.Id.HasValue && rec.Id == act.Id) ||
+                    (   act.DeliveryType.HasValue && rec.DeliveryType == act.DeliveryType && 
+                        act.CourierFIO != "" && rec.CourierFIO == act.CourierFIO && 
+                        act.DeliveryDate.HasValue && rec.DeliveryDate == act.DeliveryDate))
                 .Select(rec => new CourierBusinessLogic.Models.DeliveryAct
                 {
                     Id = rec.Id,
