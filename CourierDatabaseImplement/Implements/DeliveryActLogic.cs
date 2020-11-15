@@ -35,6 +35,7 @@ namespace CourierDatabaseImplement.Implements
                 element.CourierFIO = act.CourierFIO;
                 element.DeliveryType = act.DeliveryType.Value;
                 element.DeliveryDate = act.DeliveryDate;
+                element.PromoEffects = act.PromoEffects;
 
                 context.SaveChanges();
             }
@@ -54,6 +55,7 @@ namespace CourierDatabaseImplement.Implements
                 element.CourierFIO = act.CourierFIO;
                 element.DeliveryType = act.DeliveryType.Value;
                 element.DeliveryDate = act.DeliveryDate;
+                element.PromoEffects = act.PromoEffects;
 
                 context.SaveChanges();
             }
@@ -93,7 +95,8 @@ namespace CourierDatabaseImplement.Implements
                     Id = rec.Id,
                     CourierFIO = rec.CourierFIO,
                     DeliveryType = rec.DeliveryType,
-                    DeliveryDate = rec.DeliveryDate
+                    DeliveryDate = rec.DeliveryDate,
+                    PromoEffects = rec.PromoEffects
                 })
                 .ToList();
             }

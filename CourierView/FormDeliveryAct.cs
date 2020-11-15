@@ -21,6 +21,7 @@ namespace CourierView
                 textBoxFIO.Text = act.CourierFIO;
                 controlComboBoxDeliveryType.SelectedItem = act.DeliveryType;
                 controlInputDateDeliveryDate.Value = act.DeliveryDate;
+                labelEffects.Text = act.PromoEffects;
             }
             get
             {
@@ -38,6 +39,7 @@ namespace CourierView
             }
 
             controlInputDateDeliveryDate.Value = DateTime.Now;
+            labelEffects.Text = controlPromoCode.Effect;
 
             act = new DeliveryAct();
         }
@@ -48,6 +50,7 @@ namespace CourierView
             act.CourierFIO = textBoxFIO.Text;
             act.DeliveryType = (DeliveryType?)controlComboBoxDeliveryType.SelectedItem;
             act.DeliveryDate = checkBoxIsDelivered.Checked ? controlInputDateDeliveryDate.Value : null;
+            act.PromoEffects = controlPromoCode.Effect;
 
             DialogResult = DialogResult.OK;
             Close();
@@ -56,6 +59,11 @@ namespace CourierView
         private void checkBoxIsDelivered_CheckedChanged(object sender, EventArgs e)
         {
             controlInputDateDeliveryDate.Enabled = checkBoxIsDelivered.Checked;
+        }
+
+        private void controlPromoCode_ListBoxSelectedElementChange(object sender, EventArgs e)
+        {
+            labelEffects.Text = controlPromoCode.Effect;
         }
     }
 }

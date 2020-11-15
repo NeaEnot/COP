@@ -36,6 +36,9 @@
             this.controlComboBoxDeliveryType = new WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle();
             this.controlInputDateDeliveryDate = new WindowsFormsControlLibrary.Input.ControlInputRangeDate();
             this.checkBoxIsDelivered = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelEffects = new System.Windows.Forms.Label();
+            this.controlPromoCode = new _5thLabComponents.ControlPromoCode();
             this.SuspendLayout();
             // 
             // textBoxFIO
@@ -74,7 +77,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(129, 160);
+            this.buttonSave.Location = new System.Drawing.Point(227, 289);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 6;
@@ -99,6 +102,7 @@
             this.controlInputDateDeliveryDate.Name = "controlInputDateDeliveryDate";
             this.controlInputDateDeliveryDate.Size = new System.Drawing.Size(161, 20);
             this.controlInputDateDeliveryDate.TabIndex = 8;
+            this.controlInputDateDeliveryDate.Value = new System.DateTime(2020, 11, 15, 4, 31, 53, 954);
             // 
             // checkBoxIsDelivered
             // 
@@ -113,11 +117,39 @@
             this.checkBoxIsDelivered.UseVisualStyleBackColor = true;
             this.checkBoxIsDelivered.CheckedChanged += new System.EventHandler(this.checkBoxIsDelivered_CheckedChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 164);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Эффекты промокодов";
+            // 
+            // labelEffects
+            // 
+            this.labelEffects.AutoSize = true;
+            this.labelEffects.Location = new System.Drawing.Point(12, 254);
+            this.labelEffects.Name = "labelEffects";
+            this.labelEffects.Size = new System.Drawing.Size(0, 13);
+            this.labelEffects.TabIndex = 12;
+            // 
+            // controlPromoCode
+            // 
+            this.controlPromoCode.Location = new System.Drawing.Point(10, 180);
+            this.controlPromoCode.Name = "controlPromoCode";
+            this.controlPromoCode.Size = new System.Drawing.Size(292, 71);
+            this.controlPromoCode.TabIndex = 10;
+            this.controlPromoCode.ListBoxSelectedElementChange += new System.EventHandler(this.controlPromoCode_ListBoxSelectedElementChange);
+            // 
             // FormDeliveryAct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 195);
+            this.ClientSize = new System.Drawing.Size(334, 329);
+            this.Controls.Add(this.labelEffects);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.controlPromoCode);
             this.Controls.Add(this.checkBoxIsDelivered);
             this.Controls.Add(this.controlInputDateDeliveryDate);
             this.Controls.Add(this.controlComboBoxDeliveryType);
@@ -143,5 +175,8 @@
         private WindowsFormsControlLibrary.Selected.ControlSelectedComboBoxSingle controlComboBoxDeliveryType;
         private WindowsFormsControlLibrary.Input.ControlInputRangeDate controlInputDateDeliveryDate;
         private System.Windows.Forms.CheckBox checkBoxIsDelivered;
+        private _5thLabComponents.ControlPromoCode controlPromoCode;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelEffects;
     }
 }

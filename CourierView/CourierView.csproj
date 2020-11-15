@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentWordReport">
-      <HintPath>F:\Учёба\КОП\Компоненты\ComponentWordReport.dll</HintPath>
+      <HintPath>G:\Учёба\КОП\Компоненты\ComponentWordReport.dll</HintPath>
     </Reference>
     <Reference Include="GemBox.Document, Version=33.0.0.1017, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
       <HintPath>..\packages\GemBox.Document.33.0.1017\lib\net35\GemBox.Document.dll</HintPath>
@@ -46,7 +46,7 @@
       <HintPath>..\packages\GemBox.Spreadsheet.47.0.1013\lib\net35\GemBox.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Lab2KOP">
-      <HintPath>F:\Учёба\КОП\Компоненты\Lab2KOP.dll</HintPath>
+      <HintPath>G:\Учёба\КОП\Компоненты\Lab2KOP.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -108,7 +108,9 @@
     <Reference Include="PdfSharp-gdi">
       <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp-gdi.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -158,7 +160,7 @@
     </Reference>
     <Reference Include="WindowsFormsControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\Учёба\КОП\Компоненты\ConrtrolsLibraryDlls\WindowsFormsControlLibrary.dll</HintPath>
+      <HintPath>G:\Учёба\КОП\Компоненты\ConrtrolsLibraryDlls\WindowsFormsControlLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +223,10 @@
     <ProjectReference Include="..\_4thLabComponents\_4thLabComponents.csproj">
       <Project>{ff783128-3666-45f6-af9c-274f465c92bc}</Project>
       <Name>_4thLabComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_5thLabComponents\_5thLabComponents.csproj">
+      <Project>{3958716e-65a9-47d1-b34f-6a8cbac557c1}</Project>
+      <Name>_5thLabComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

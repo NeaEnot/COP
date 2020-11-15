@@ -14,6 +14,7 @@ namespace CourierBusinessLogic.Models
         public string CourierFIO { set { courierFIO = value; } get { return courierFIO; } }
         public DeliveryType? DeliveryType { set { deliveryType = value; } get { return deliveryType; } }
         public DateTime? DeliveryDate { set { deliveryDate = value; } get { return deliveryDate; } }
+        public string PromoEffects { get; set; }
 
         public object Clone()
         {

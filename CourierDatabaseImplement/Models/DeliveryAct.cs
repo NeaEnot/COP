@@ -1,6 +1,5 @@
 ﻿using CourierBusinessLogic.Enums;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourierDatabaseImplement.Models
@@ -15,5 +14,7 @@ namespace CourierDatabaseImplement.Models
         public DeliveryType DeliveryType { set; get; }
 
         public DateTime? DeliveryDate { set; get; }
+
+        public string PromoEffects { get; set; }
     }
 }
