@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourierDatabaseImplement.Models
 {
-    public class DeliveryAct
+    public class DeliveryAct : ICloneable
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { set; get; }
@@ -16,5 +16,17 @@ namespace CourierDatabaseImplement.Models
         public DateTime? DeliveryDate { set; get; }
 
         public string PromoEffects { get; set; }
+
+        public object Clone()
+        {
+            return new DeliveryAct
+            {
+                Id = Id,
+                CourierFIO = CourierFIO,
+                DeliveryType = DeliveryType,
+                DeliveryDate = DeliveryDate,
+                PromoEffects = PromoEffects
+            };
+        }
     }
 }

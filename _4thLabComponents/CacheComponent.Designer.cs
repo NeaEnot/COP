@@ -1,6 +1,6 @@
 ﻿namespace _4thLabComponents
 {
-    partial class ActionsList
+    partial class CacheComponent<T>
     {
         /// <summary>
         /// Обязательная переменная конструктора.

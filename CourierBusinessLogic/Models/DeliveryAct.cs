@@ -3,7 +3,7 @@ using System;
 
 namespace CourierBusinessLogic.Models
 {
-    public class DeliveryAct : ICloneable
+    public class DeliveryAct
     {
         public int? id;
         public string courierFIO;
@@ -15,16 +15,5 @@ namespace CourierBusinessLogic.Models
         public DeliveryType? DeliveryType { set { deliveryType = value; } get { return deliveryType; } }
         public DateTime? DeliveryDate { set { deliveryDate = value; } get { return deliveryDate; } }
         public string PromoEffects { get; set; }
-
-        public object Clone()
-        {
-            return new DeliveryAct
-            {
-                id = id,
-                courierFIO = courierFIO.Clone().ToString(),
-                deliveryDate = deliveryDate,
-                deliveryType = deliveryType
-            };
-        }
     }
 }

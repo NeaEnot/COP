@@ -41,7 +41,7 @@
             this.xmlBackuperKozlov = new _2ndLabComponents.XmlBackuperKozlov(this.components);
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.actionsList = new _4thLabComponents.ActionsList(this.components);
+            this.actionsList = new _6thLabComponents.ActionsList(this.components);
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -174,7 +174,7 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;
-        private _4thLabComponents.ActionsList actionsList;
+        private _6thLabComponents.ActionsList actionsList;
     }
 }
 

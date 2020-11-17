@@ -190,6 +190,10 @@
       <Project>{D89EA5B3-9B6E-40D6-8FDC-B2BD1D411420}</Project>
       <Name>CourierBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\_4thLabComponents\_4thLabComponents.csproj">
+      <Project>{FF783128-3666-45F6-AF9C-274F465C92BC}</Project>
+      <Name>_4thLabComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

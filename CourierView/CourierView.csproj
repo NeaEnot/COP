@@ -228,6 +228,10 @@
       <Project>{3958716e-65a9-47d1-b34f-6a8cbac557c1}</Project>
       <Name>_5thLabComponents</Name>
     </ProjectReference>
+    <ProjectReference Include="..\_6thLabComponents\_6thLabComponents.csproj">
+      <Project>{29150F42-0D40-48B0-A707-D48DF9E25621}</Project>
+      <Name>_6thLabComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

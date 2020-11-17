@@ -1,4 +1,5 @@
-﻿using CourierBusinessLogic.Enums;
+﻿using _6thLabComponents;
+using CourierBusinessLogic.Enums;
 using CourierBusinessLogic.Interfaces;
 using CourierBusinessLogic.Models;
 using Lab2KOP;
@@ -33,13 +34,19 @@ namespace CourierView
             controlDataTreeRow.LoadTreeInfo(new DataTreeNodeConfig { NodeNames = queue });
         }
 
-        private void LoadData()
+        private void LoadData(bool isNeedStore = true)
         {
             deliveryActs = logic.Read(null);
             controlDataTreeRow.Clear();
             foreach (var act in deliveryActs)
             {
                 controlDataTreeRow.AddRow(act);
+            }
+
+            if (isNeedStore)
+            {
+                Memento memento = new Memento(deliveryActs);
+                actionsList.Add(memento);
             }
 
             buttonPrev.Enabled = actionsList.CanPrev;
@@ -57,9 +64,7 @@ namespace CourierView
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                actionsList.AddBefore(null);
                 logic.Create(form.Act);
-                actionsList.AddAfter(logic.Read(form.Act)?[0]);
 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
@@ -79,12 +84,10 @@ namespace CourierView
                     DeliveryAct deliveryAct = ParseActFromForm();
                     var form = Container.Resolve<FormDeliveryAct>();
                     form.Act = deliveryAct;
-                    actionsList.AddBefore(deliveryAct);
 
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         logic.Update(form.Act);
-                        actionsList.AddAfter(form.Act);
 
                         MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
@@ -108,9 +111,7 @@ namespace CourierView
                 try
                 {
                     DeliveryAct deliveryAct = ParseActFromForm();
-                    actionsList.AddBefore(deliveryAct);
                     logic.Delete(deliveryAct);
-                    actionsList.AddAfter(null);
 
                     MessageBox.Show("Удаление прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
@@ -242,32 +243,42 @@ namespace CourierView
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            var values = actionsList.Prev();
-            Undo(values.after, values.before);
+            Memento memento = actionsList.Prev();
+            Restore(memento);
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            var values = actionsList.Next();
-            Undo(values.before, values.after);
+            Memento memento = actionsList.Next();
+            Restore(memento);
         }
 
-        private void Undo(ICloneable undo, ICloneable todo)
+        private void Restore(Memento memento)
         {
-            if (undo == null && todo != null)
+            List<int> ids = new List<int>();
+
+            foreach (DeliveryAct item in (List<DeliveryAct>)memento.Obj)
             {
-                logic.Create((DeliveryAct)todo);
-            }
-            else if (undo != null && todo == null)
-            {
-                logic.Delete((DeliveryAct)undo);
-            }
-            else if (undo != null && todo != null)
-            {
-                logic.Update((DeliveryAct)todo);
+                DeliveryAct act = deliveryActs.FirstOrDefault(rec => rec.Id == item.Id);
+
+                if (act == null)
+                {
+                    logic.Create(item);
+                }
+                else
+                {
+                    logic.Update(act);
+                }
+
+                ids.Add(item.Id.Value);
             }
 
-            LoadData();
+            foreach (DeliveryAct item in deliveryActs.Where(rec => !ids.Contains(rec.Id.Value)))
+            {
+                logic.Delete(item);
+            }
+
+            LoadData(false);
         }
     }
 }
