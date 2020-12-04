@@ -216,6 +216,10 @@
       <Project>{48A80190-99A0-446B-ADA4-B8E7D8D8E5FA}</Project>
       <Name>CourierDatabaseImplement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PluginConfiguration\PluginConfiguration.csproj">
+      <Project>{7FF11894-5985-4E02-8169-056BB0BE2F59}</Project>
+      <Name>PluginConfiguration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\_2ndLabComponents\_2ndLabComponents.csproj">
       <Project>{888AFBE7-C800-4A34-9FB0-2CF3AE63C6AF}</Project>
       <Name>_2ndLabComponents</Name>

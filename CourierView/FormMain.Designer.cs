@@ -42,6 +42,10 @@
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.actionsList = new _6thLabComponents.ActionsList(this.components);
+            this.comboBoxPlugins = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonInvokePlugin = new System.Windows.Forms.Button();
+            this.textBoxModifyValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -64,7 +68,7 @@
             // 
             // buttonBackup
             // 
-            this.buttonBackup.Location = new System.Drawing.Point(551, 404);
+            this.buttonBackup.Location = new System.Drawing.Point(632, 404);
             this.buttonBackup.Name = "buttonBackup";
             this.buttonBackup.Size = new System.Drawing.Size(75, 23);
             this.buttonBackup.TabIndex = 4;
@@ -74,7 +78,7 @@
             // 
             // buttonReport
             // 
-            this.buttonReport.Location = new System.Drawing.Point(632, 404);
+            this.buttonReport.Location = new System.Drawing.Point(713, 404);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(75, 23);
             this.buttonReport.TabIndex = 5;
@@ -84,7 +88,7 @@
             // 
             // buttonChart
             // 
-            this.buttonChart.Location = new System.Drawing.Point(713, 404);
+            this.buttonChart.Location = new System.Drawing.Point(713, 431);
             this.buttonChart.Name = "buttonChart";
             this.buttonChart.Size = new System.Drawing.Size(75, 23);
             this.buttonChart.TabIndex = 6;
@@ -103,7 +107,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(93, 404);
+            this.buttonUpdate.Location = new System.Drawing.Point(12, 433);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 7;
@@ -113,7 +117,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(174, 404);
+            this.buttonDelete.Location = new System.Drawing.Point(93, 404);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 8;
@@ -123,7 +127,7 @@
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(322, 404);
+            this.buttonPrev.Location = new System.Drawing.Point(99, 433);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(27, 23);
             this.buttonPrev.TabIndex = 9;
@@ -133,7 +137,7 @@
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(355, 404);
+            this.buttonNext.Location = new System.Drawing.Point(132, 433);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(27, 23);
             this.buttonNext.TabIndex = 10;
@@ -141,11 +145,51 @@
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
+            // comboBoxPlugins
+            // 
+            this.comboBoxPlugins.FormattingEnabled = true;
+            this.comboBoxPlugins.Location = new System.Drawing.Point(267, 404);
+            this.comboBoxPlugins.Name = "comboBoxPlugins";
+            this.comboBoxPlugins.Size = new System.Drawing.Size(315, 21);
+            this.comboBoxPlugins.TabIndex = 11;
+            this.comboBoxPlugins.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlugins_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(206, 409);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Плагины:";
+            // 
+            // buttonInvokePlugin
+            // 
+            this.buttonInvokePlugin.Location = new System.Drawing.Point(507, 431);
+            this.buttonInvokePlugin.Name = "buttonInvokePlugin";
+            this.buttonInvokePlugin.Size = new System.Drawing.Size(75, 23);
+            this.buttonInvokePlugin.TabIndex = 13;
+            this.buttonInvokePlugin.Text = "Выполнить";
+            this.buttonInvokePlugin.UseVisualStyleBackColor = true;
+            this.buttonInvokePlugin.Click += new System.EventHandler(this.buttonInvokePlugin_Click);
+            // 
+            // textBoxModifyValue
+            // 
+            this.textBoxModifyValue.Enabled = false;
+            this.textBoxModifyValue.Location = new System.Drawing.Point(267, 431);
+            this.textBoxModifyValue.Name = "textBoxModifyValue";
+            this.textBoxModifyValue.Size = new System.Drawing.Size(145, 20);
+            this.textBoxModifyValue.TabIndex = 14;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 439);
+            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.Controls.Add(this.textBoxModifyValue);
+            this.Controls.Add(this.buttonInvokePlugin);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxPlugins);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonDelete);
@@ -158,6 +202,7 @@
             this.Name = "FormMain";
             this.Text = "Курьер";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -175,6 +220,10 @@
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;
         private _6thLabComponents.ActionsList actionsList;
+        private System.Windows.Forms.ComboBox comboBoxPlugins;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonInvokePlugin;
+        private System.Windows.Forms.TextBox textBoxModifyValue;
     }
 }
 

@@ -4,6 +4,7 @@ using CourierBusinessLogic.Interfaces;
 using CourierBusinessLogic.Models;
 using Lab2KOP;
 using Lab2KOP.WordHelpModels;
+using PluginConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace CourierView
 
         private List<DeliveryAct> deliveryActs;
 
+        private readonly PluginManager pluginManager;
+
         public FormMain(IDeliveryActLogic logic)
         {
             this.logic = logic;
@@ -32,6 +35,9 @@ namespace CourierView
             queue.Enqueue("CourierFIO");
             queue.Enqueue("DeliveryDate");
             controlDataTreeRow.LoadTreeInfo(new DataTreeNodeConfig { NodeNames = queue });
+
+            pluginManager = new PluginManager();
+            comboBoxPlugins.Items.AddRange(pluginManager.Headers.ToArray());
         }
 
         private void LoadData(bool isNeedStore = true)
@@ -279,6 +285,67 @@ namespace CourierView
             }
 
             LoadData(false);
+        }
+
+        private void buttonInvokePlugin_Click(object sender, EventArgs e)
+        {
+            if (comboBoxPlugins.SelectedItem != null)
+            {
+                try
+                {
+                    dynamic action = null;
+                    if (pluginManager.ChangersDict.ContainsKey(comboBoxPlugins.SelectedItem.ToString()))
+                        action = pluginManager.ChangersDict[comboBoxPlugins.SelectedItem.ToString()];
+                    if (pluginManager.ModifiersDict.ContainsKey(comboBoxPlugins.SelectedItem.ToString()))
+                        action = pluginManager.ModifiersDict[comboBoxPlugins.SelectedItem.ToString()];
+                    if (pluginManager.PrintersDict.ContainsKey(comboBoxPlugins.SelectedItem.ToString()))
+                        action = pluginManager.PrintersDict[comboBoxPlugins.SelectedItem.ToString()];
+
+                    InvokePlugin(action);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void InvokePlugin(PluginManager.FormDelegate change)
+        {
+            DeliveryAct deliveryAct = ParseActFromForm();
+            var form = change(deliveryAct);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                logic.Update(deliveryAct);
+
+                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+            }
+        }
+
+        private void InvokePlugin(Action<DeliveryAct, string> modify)
+        {
+            DeliveryAct deliveryAct = ParseActFromForm();
+            string value = textBoxModifyValue.Text;
+
+            modify(deliveryAct, value);
+
+            logic.Update(deliveryAct);
+
+            MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadData();
+        }
+
+        private void InvokePlugin(Action<DeliveryAct> print)
+        {
+            DeliveryAct deliveryAct = ParseActFromForm();
+            print(deliveryAct);
+        }
+
+        private void comboBoxPlugins_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxModifyValue.Enabled = pluginManager.ModifiersDict.ContainsKey(comboBoxPlugins.SelectedItem.ToString());
         }
     }
 }

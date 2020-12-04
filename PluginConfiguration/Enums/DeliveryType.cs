@@ -1,4 +1,4 @@
-﻿namespace CourierBusinessLogic.Enums
+﻿namespace PluginConfiguration.Enums
 {
     public enum DeliveryType
     {
